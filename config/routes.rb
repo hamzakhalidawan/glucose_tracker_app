@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     get 'forgot_password', to: 'users/passwords#new'
     get 'reset_password', to: 'users/passwords#edit'
   end
+  resources :glucoses
+
+  get 'generate_report', to: 'glucoses#generate_report'
+  get 'report_details', to: 'glucoses#report_details'
+
 
   root to: 'application#home'
 end

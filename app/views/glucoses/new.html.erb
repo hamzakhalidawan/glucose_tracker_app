@@ -1,0 +1,16 @@
+<h2 class="text-center m-5">Add Glucose Level</h2>
+<section class="col-8 offset-2 col-sm-6 offset-sm-3">
+<%= form_for(@glucose, url: glucoses_path(@glucose)) do |f| %>
+
+  <div class="field">
+    <%= f.label :Level %><br />
+    <%= f.number_field :level, autofocus: true, autocomplete: "level", class: 'form-control m-2'  %>
+    <%= f.hidden_field :reading_date, :value => Date.today  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: 'btn btn-primary m-2'  %>
+  </div>
+<% end %>
+<hr>
+</section>

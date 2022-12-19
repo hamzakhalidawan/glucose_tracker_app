@@ -1,0 +1,50 @@
+<h2 class="text-center m-5">Report Generator</h2>
+<section class="col-8 offset-2 col-sm-6 offset-sm-3">
+
+<%= form_with url: "/report_details", method: :get, local: true do |form| %>
+  <div class="field">
+    <%= form.label :type, "Select Type:" %><br />
+    <%= form.select(:type, [['daily', 1], ['monthly', 2]], {:include_blank => 'Select type'}, { class: 'form-control m-2 date-type'}) %>
+  </div>
+
+  <div class="field daily d-none">
+    <%= form.label :date, "Select date:" %><br />
+    <%= form.date_field :date, { class: "form-control m-2" } %>
+  </div>
+
+  <div class="field start-date d-none">
+    <%= form.label :start_date, "Select start date:" %><br />
+    <%= form.date_field :start_date, { class: "form-control m-2" } %>
+  </div>
+
+  <div class="field end-date d-none">
+    <%= form.label :end_date, "Select end date:" %><br />
+    <%= form.date_field :end_date, { class: "form-control m-2" } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save", class: 'btn btn-primary m-2'  %>
+  </div>
+<% end %>
+
+<hr>
+</section>
+
+
+<script>
+$(document).ready(function(){
+    $(".date-type").change(function () {
+        id = $(this).val()
+        if(id == 1){
+            $(".daily").removeClass("d-none");
+            $(".start-date").addClass("d-none");
+            $(".end-date").addClass("d-none");
+            
+        }else if(id == 2){
+            $(".daily").addClass("d-none");
+            $(".start-date").removeClass("d-none");
+            $(".end-date").removeClass("d-none");
+        }
+    });
+});
+</script>
